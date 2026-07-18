@@ -17,6 +17,11 @@ export default function Header() {
 
   return (
     <>
+      {/* Announcement Bar */}
+      <div className={styles.announcement}>
+        Free Shipping on orders above <strong>₹10,000</strong> &nbsp;|&nbsp; Handcrafted with love in India
+      </div>
+
       <header className={styles.header}>
         <div className={styles.container}>
           <Link href="/" className={styles.logo}>
@@ -24,32 +29,37 @@ export default function Header() {
           </Link>
 
           <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
-            <Link href="/" className={styles.navLink}>Home</Link>
-            <Link href="/products" className={styles.navLink}>Shop</Link>
-            <Link href="/products?collection=new-arrivals" className={styles.navLink}>New Arrivals</Link>
-            <Link href="/products?collection=bestsellers" className={styles.navLink}>Bestsellers</Link>
+            <Link href="/" className={styles.navLink} onClick={() => setMenuOpen(false)}>Home</Link>
+            <Link href="/products" className={styles.navLink} onClick={() => setMenuOpen(false)}>Shop All</Link>
+            <Link href="/products?collection=new-arrivals" className={styles.navLink} onClick={() => setMenuOpen(false)}>New Arrivals</Link>
+            <Link href="/products?collection=bestsellers" className={styles.navLink} onClick={() => setMenuOpen(false)}>Bestsellers</Link>
+            <Link href="/products?category=hand-knotted" className={styles.navLink} onClick={() => setMenuOpen(false)}>Hand Knotted</Link>
           </nav>
 
           <div className={styles.actions}>
             <button className={styles.iconBtn} aria-label="Search" onClick={() => setSearchOpen(true)}>
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <svg width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
               </svg>
             </button>
 
-            <Link href="/wishlist" className={styles.iconBtn} aria-label="Wishlist">
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-              </svg>
-              {wishlistCount > 0 && <span className={styles.badge}>{wishlistCount}</span>}
-            </Link>
+            {(!user || user.role === 'buyer') && (
+              <>
+                <Link href="/wishlist" className={styles.iconBtn} aria-label="Wishlist">
+                  <svg width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                  </svg>
+                  {wishlistCount > 0 && <span className={styles.badge}>{wishlistCount}</span>}
+                </Link>
 
-            <Link href="/cart" className={styles.iconBtn} aria-label="Cart">
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-              </svg>
-              {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
-            </Link>
+                <Link href="/cart" className={styles.iconBtn} aria-label="Cart">
+                  <svg width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" />
+                  </svg>
+                  {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+                </Link>
+              </>
+            )}
 
             {!loading && (
               <>
@@ -76,7 +86,7 @@ export default function Header() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
               {menuOpen ? (
                 <path d="M18 6 6 18M6 6l12 12" />
               ) : (

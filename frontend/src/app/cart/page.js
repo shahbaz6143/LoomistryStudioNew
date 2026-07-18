@@ -96,7 +96,7 @@ export default function CartPage() {
             <span>Total</span>
             <span>₹{subtotal.toLocaleString()}</span>
           </div>
-          <button className={styles.checkoutBtn}>Proceed to Checkout</button>
+          <Link href="/checkout" className={styles.checkoutBtn}>Proceed to Checkout</Link>
           <Link href="/products" className={styles.continueLink}>Continue Shopping</Link>
         </div>
       </div>

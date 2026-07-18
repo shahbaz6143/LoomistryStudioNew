@@ -10,6 +10,13 @@ const {
 } = require('../controllers/admin.product.controller');
 const { uploadImages, uploadVideoFile } = require('../controllers/upload.controller');
 const { uploadImage, uploadVideo } = require('../services/cloudinary.service');
+const {
+  getAllCoupons,
+  createCoupon,
+  updateCoupon,
+  deleteCoupon,
+  toggleCoupon,
+} = require('../controllers/coupon.controller');
 
 const router = express.Router();
 
@@ -35,6 +42,14 @@ router.delete('/products/:id', requireRole('admin'), deleteProduct);
 
 // PATCH /api/admin/products/:id/toggle — toggle active (admin + editor)
 router.patch('/products/:id/toggle', requireRole('admin', 'editor'), toggleProduct);
+
+// ─── Coupon CRUD ─────────────────────────────────────────────────────────────
+
+router.get('/coupons', requireRole('admin', 'editor'), getAllCoupons);
+router.post('/coupons', requireRole('admin'), createCoupon);
+router.put('/coupons/:id', requireRole('admin'), updateCoupon);
+router.delete('/coupons/:id', requireRole('admin'), deleteCoupon);
+router.patch('/coupons/:id/toggle', requireRole('admin'), toggleCoupon);
 
 // ─── Media Upload ────────────────────────────────────────────────────────────
 

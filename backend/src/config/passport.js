@@ -37,6 +37,12 @@ const findOrCreateUser = async (provider, profile) => {
       providerId: profile.id,
       role: 'buyer',
     });
+  } else {
+    // Update avatar if changed, but never override role
+    if (avatar && avatar !== user.avatar) {
+      user.avatar = avatar;
+      await user.save();
+    }
   }
 
   return user;

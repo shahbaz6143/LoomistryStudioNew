@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer';
 import { AuthProvider } from '@/context/AuthContext';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
+import { CurrencyProvider } from '@/context/CurrencyContext';
 
 export const metadata = {
   title: 'LoomistryStudio - Premium Handmade Rugs & Carpets',
@@ -14,15 +15,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
+      </head>
       <body>
         <AuthProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <Header />
-              <main>{children}</main>
-              <Footer />
-            </WishlistProvider>
-          </CartProvider>
+          <CurrencyProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <Header />
+                <main>{children}</main>
+                <Footer />
+              </WishlistProvider>
+            </CartProvider>
+          </CurrencyProvider>
         </AuthProvider>
       </body>
     </html>

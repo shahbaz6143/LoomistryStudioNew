@@ -313,7 +313,7 @@ Confirmed → Processing → Shipped → Delivered
 **Objective:** Implement social authentication with Google, Facebook, Twitter, and Apple using Passport.js with JWT sessions.
 
 **Implementation:**
-- Set up Passport.js strategies for Google, Facebook, Twitter OAuth
+- Set up Passport.js strategies for Google, Facebook, Twitter, Apple OAuth
 - Create User model (Mongoose) — name, email, avatar, authProvider, role, timestamps
 - Implement JWT token generation and refresh token flow in `controllers/auth.controller.js`
 - Build auth middleware (`middleware/auth.middleware.js`) for protected routes
@@ -619,6 +619,7 @@ Confirmed → Processing → Shipped → Delivered
 | GET | `/api/auth/facebook` | Initiate Facebook OAuth |
 | GET | `/api/auth/facebook/callback` | Facebook OAuth callback |
 | GET | `/api/auth/twitter` | Initiate Twitter OAuth |
+| GET | `/api/auth/apple` | Initiate Apple OAuth |
 | GET | `/api/auth/me` | Get current user profile |
 | POST | `/api/auth/refresh` | Refresh access token |
 | POST | `/api/auth/logout` | Logout user |
