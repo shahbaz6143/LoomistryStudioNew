@@ -71,6 +71,14 @@ router.get('/orders/:id', requireRole('admin', 'editor'), getOrderDetail);
 router.put('/orders/:id/status', requireRole('admin'), updateOrderStatus);
 router.put('/orders/:id/tracking', requireRole('admin', 'editor'), updateTracking);
 
+// ─── Abandoned Cart Trigger ──────────────────────────────────────────────────
+
+router.post('/abandoned-carts/check', requireRole('admin'), async (req, res) => {
+  const { checkAbandonedCarts } = require('../services/abandoned-cart.service');
+  const result = await checkAbandonedCarts();
+  res.status(200).json({ status: 'success', data: result });
+});
+
 // ─── Reviews (Moderation) ────────────────────────────────────────────────────
 
 router.get('/reviews', requireRole('admin', 'editor'), getAllReviews);

@@ -3,6 +3,8 @@ const crypto = require('crypto');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const Order = require('../models/order.model');
 const Cart = require('../models/cart.model');
+const User = require('../models/user.model');
+const { sendOrderConfirmation } = require('../services/email.service');
 
 // Initialize Razorpay
 const razorpay = new Razorpay({
@@ -86,6 +88,12 @@ const verifyRazorpayPayment = async (req, res) => {
 
     // Clear cart after successful order
     await Cart.findOneAndDelete({ userId: req.user.id });
+
+    // Send order confirmation email
+    const user = await User.findById(req.user.id);
+    if (user?.email) {
+      sendOrderConfirmation(order, user.email).catch(err => console.error('Email failed:', err));
+    }
 
     res.status(200).json({
       status: 'success',

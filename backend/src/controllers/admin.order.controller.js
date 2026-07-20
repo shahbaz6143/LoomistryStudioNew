@@ -1,4 +1,6 @@
 const Order = require('../models/order.model');
+const User = require('../models/user.model');
+const { sendOrderShipped, sendOrderDelivered } = require('../services/email.service');
 
 /**
  * Get all orders (admin) with filters and pagination
@@ -92,6 +94,17 @@ const updateOrderStatus = async (req, res) => {
     }
 
     await order.save();
+
+    // Send email notifications on status change
+    const orderUser = await User.findById(order.userId);
+    if (orderUser?.email) {
+      if (status === 'shipped') {
+        sendOrderShipped(order, orderUser.email).catch(err => console.error('Email failed:', err));
+      }
+      if (status === 'delivered') {
+        sendOrderDelivered(order, orderUser.email).catch(err => console.error('Email failed:', err));
+      }
+    }
 
     res.status(200).json({
       status: 'success',
