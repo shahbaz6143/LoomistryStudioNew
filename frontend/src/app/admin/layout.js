@@ -28,6 +28,8 @@ export default function AdminLayout({ children }) {
     { href: '/admin/products', label: 'Products', icon: '📦' },
     { href: '/admin/products/new', label: 'Add Product', icon: '➕' },
     { href: '/admin/orders', label: 'Orders', icon: '🛒' },
+    { href: '/admin/catalogues', label: 'Catalogues', icon: '📖' },
+    { href: '/admin/clients', label: 'Clients', icon: '👥' },
     { href: '/admin/coupons', label: 'Coupons', icon: '🎟️' },
     { href: '/admin/reviews', label: 'Reviews', icon: '⭐' },
   ];

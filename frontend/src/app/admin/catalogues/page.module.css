@@ -1,0 +1,46 @@
+.header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.title { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 500; color: var(--primary); }
+.addBtn { padding: 0.6rem 1.25rem; background: var(--primary); color: white; border-radius: var(--radius); font-size: 0.85rem; font-weight: 500; cursor: pointer; border: none; }
+
+.form { background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 2rem; }
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.3rem; }
+.field input, .field textarea { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.85rem; font-family: inherit; }
+.field textarea { resize: vertical; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--secondary); }
+.hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+.pagesPreview { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0; }
+.pageThumb { position: relative; width: 80px; height: 110px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+.pageThumb img { width: 100%; height: 100%; object-fit: cover; }
+.pageNum { position: absolute; bottom: 4px; left: 4px; background: rgba(0,0,0,0.6); color: white; font-size: 0.6rem; padding: 1px 4px; border-radius: 2px; }
+.removeBtn { position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+.submitBtn { padding: 0.7rem 1.5rem; background: var(--secondary); color: white; border: none; border-radius: var(--radius); font-size: 0.85rem; font-weight: 500; cursor: pointer; }
+
+.empty { text-align: center; padding: 3rem; color: var(--muted); }
+
+.list { display: flex; flex-direction: column; gap: 1rem; }
+.card { display: flex; align-items: center; gap: 1rem; background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem; }
+.cardImg { width: 80px; height: 60px; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+.cardImg img { width: 100%; height: 100%; object-fit: cover; }
+.cardInfo { flex: 1; }
+.cardInfo h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.2rem; }
+.cardInfo p { font-size: 0.8rem; color: var(--muted); }
+.slug { font-family: monospace; font-size: 0.7rem !important; color: var(--secondary) !important; margin-top: 0.2rem; }
+.cardActions { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.viewBtn, .sendBtn, .deleteBtn { font-size: 0.75rem; padding: 0.35rem 0.7rem; border-radius: var(--radius); border: none; cursor: pointer; text-decoration: none; }
+.viewBtn { background: var(--background-alt); color: var(--primary); }
+.sendBtn { background: var(--secondary); color: white; }
+.deleteBtn { background: #fee2e2; color: var(--error); }
+
+/* Modal */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 2rem; }
+.modalContent { background: white; border-radius: var(--radius-lg); padding: 2rem; width: 100%; max-width: 480px; }
+.modalContent h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.modalContent p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.modalContent textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.85rem; font-family: inherit; resize: vertical; }
+.modalContent textarea:focus { outline: none; border-color: var(--secondary); }
+.modalActions { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem; }
+.cancelBtn { padding: 0.6rem 1.25rem; background: var(--background-alt); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; font-size: 0.85rem; }
+.confirmBtn { padding: 0.6rem 1.25rem; background: var(--primary); color: white; border: none; border-radius: var(--radius); cursor: pointer; font-size: 0.85rem; font-weight: 500; }

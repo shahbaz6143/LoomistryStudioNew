@@ -1,0 +1,258 @@
+.page {
+  min-height: 100vh;
+  background: #6b7b6e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  user-select: none;
+}
+
+/* Book */
+.book {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  aspect-ratio: 3/2;
+  perspective: 2000px;
+}
+
+.bookInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.pageLeft,
+.pageRight {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+
+.pageLeft {
+  border-right: 1px solid #ddd;
+}
+
+.pageImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.coverContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f9f7f4;
+  padding: 2rem;
+}
+
+.coverTitle {
+  font-family: Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.coverBrand {
+  font-size: 0.9rem;
+  color: #888;
+  letter-spacing: 2px;
+}
+
+/* Spine */
+.spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, rgba(0,0,0,0.15), transparent, rgba(0,0,0,0.08));
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Click areas */
+.clickLeft,
+.clickRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.clickLeft { left: 0; cursor: w-resize; }
+.clickRight { right: 0; cursor: e-resize; }
+.clickLeft:disabled,
+.clickRight:disabled { cursor: default; }
+
+/* Page Turn Animation - Next */
+.turnPageNext {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 20;
+  transform-origin: left center;
+  animation: turnNext 0.6s ease-in-out forwards;
+  transform-style: preserve-3d;
+}
+
+.turnPageNext .turnFront {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.turnPageNext .turnBack {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  overflow: hidden;
+}
+
+@keyframes turnNext {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(-180deg); }
+}
+
+/* Page Turn Animation - Prev */
+.turnPagePrev {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 20;
+  transform-origin: right center;
+  animation: turnPrev 0.6s ease-in-out forwards;
+  transform-style: preserve-3d;
+}
+
+.turnPagePrev .turnFront {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.turnPagePrev .turnBack {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  transform: rotateY(-180deg);
+  overflow: hidden;
+}
+
+@keyframes turnPrev {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+
+/* Navigation Bar */
+.navBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.navBtn {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.navBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.navCenter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pageNum {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  font-family: Arial, sans-serif;
+  min-width: 50px;
+  text-align: center;
+}
+
+.progressBar {
+  width: 180px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: white;
+  transition: width 0.4s ease;
+  border-radius: 2px;
+}
+
+.fullscreenBtn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.fullscreenBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 768px) {
+  .page { padding: 1rem; }
+  .book { aspect-ratio: 1/1.2; }
+  .coverTitle { font-size: 1.5rem; }
+  .progressBar { width: 100px; }
+}

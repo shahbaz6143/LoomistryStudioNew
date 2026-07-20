@@ -85,6 +85,40 @@ router.get('/reviews', requireRole('admin', 'editor'), getAllReviews);
 router.put('/reviews/:id', requireRole('admin'), moderateReview);
 router.delete('/reviews/:id', requireRole('admin'), deleteReview);
 
+// ─── Catalogues ──────────────────────────────────────────────────────────────
+
+const {
+  getAllCatalogues,
+  createCatalogue,
+  updateCatalogue,
+  deleteCatalogue,
+  sendCatalogueToClients,
+} = require('../controllers/catalogue.controller');
+
+router.get('/catalogues', requireRole('admin', 'editor'), getAllCatalogues);
+router.post('/catalogues', requireRole('admin', 'editor'), createCatalogue);
+router.put('/catalogues/:id', requireRole('admin', 'editor'), updateCatalogue);
+router.delete('/catalogues/:id', requireRole('admin'), deleteCatalogue);
+router.post('/catalogues/:id/send', requireRole('admin', 'editor'), sendCatalogueToClients);
+
+// ─── Client Contacts ─────────────────────────────────────────────────────────
+
+const {
+  getAllClients,
+  addClient,
+  addBulkClients,
+  updateClient,
+  deleteClient,
+  sendBulkEmail,
+} = require('../controllers/client.controller');
+
+router.get('/clients', requireRole('admin', 'editor'), getAllClients);
+router.post('/clients', requireRole('admin', 'editor'), addClient);
+router.post('/clients/bulk', requireRole('admin', 'editor'), addBulkClients);
+router.put('/clients/:id', requireRole('admin', 'editor'), updateClient);
+router.delete('/clients/:id', requireRole('admin'), deleteClient);
+router.post('/clients/send-email', requireRole('admin', 'editor'), sendBulkEmail);
+
 // ─── Media Upload ────────────────────────────────────────────────────────────
 
 // POST /api/admin/upload/images — upload multiple images (admin + editor)

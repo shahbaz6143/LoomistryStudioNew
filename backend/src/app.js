@@ -18,6 +18,7 @@ const paymentRoutes = require('./routes/payment.routes');
 const orderRoutes = require('./routes/order.routes');
 const couponRoutes = require('./routes/coupon.routes');
 const reviewRoutes = require('./routes/review.routes');
+const catalogueRoutes = require('./routes/catalogue.routes');
 const { notFoundHandler, errorHandler } = require('./middleware/error.middleware');
 
 const app = express();
@@ -42,12 +43,14 @@ const generalLimiter = rateLimit({
 
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 20, // 20 auth attempts per 15 min
+  max: 20, // 20 auth attempts per 15 min (login/signup only)
   message: { status: 'error', message: 'Too many authentication attempts.' },
 });
 
 app.use('/api/', generalLimiter);
-app.use('/api/auth/', authLimiter);
+app.use('/api/auth/google', authLimiter);
+app.use('/api/auth/facebook', authLimiter);
+app.use('/api/auth/twitter', authLimiter);
 app.use('/api/payments/', authLimiter);
 
 // Passport initialization
@@ -65,6 +68,7 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/coupons', couponRoutes);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/catalogues', catalogueRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Error handling

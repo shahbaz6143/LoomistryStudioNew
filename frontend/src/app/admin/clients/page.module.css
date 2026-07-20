@@ -1,0 +1,47 @@
+.header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.title { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 500; color: var(--primary); }
+.headerActions { display: flex; gap: 0.5rem; }
+.addBtn, .sendBtn { padding: 0.6rem 1.25rem; border-radius: var(--radius); font-size: 0.8rem; font-weight: 500; cursor: pointer; border: none; }
+.addBtn { background: var(--primary); color: white; }
+.sendBtn { background: var(--secondary); color: white; }
+.sendBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Add Form */
+.form { background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; }
+.formRow { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.formRow input { flex: 1; min-width: 150px; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.85rem; }
+.formRow input:focus { outline: none; border-color: var(--secondary); }
+.formSubmit { padding: 0.6rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: var(--radius); font-size: 0.85rem; cursor: pointer; }
+
+/* Selection bar */
+.selectionBar { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: #eef2ff; border-radius: var(--radius); margin-bottom: 1rem; font-size: 0.85rem; color: #3730a3; }
+.selectionBar strong { font-weight: 600; }
+
+/* Table */
+.tableWrapper { background: white; border-radius: var(--radius-lg); border: 1px solid var(--border); overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; }
+.table th { text-align: left; padding: 0.75rem 1rem; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); border-bottom: 1px solid var(--border); background: var(--background-alt); }
+.table td { padding: 0.75rem 1rem; font-size: 0.85rem; border-bottom: 1px solid var(--border-light); vertical-align: middle; }
+.table tr:last-child td { border-bottom: none; }
+.checkbox { width: 16px; height: 16px; cursor: pointer; accent-color: var(--secondary); }
+.name { font-weight: 500; }
+.email { color: var(--secondary); font-size: 0.8rem; }
+.tag { display: inline-block; padding: 0.15rem 0.4rem; background: var(--background-alt); border-radius: 3px; font-size: 0.65rem; color: var(--muted); margin-right: 0.25rem; }
+.lastMailed { font-size: 0.75rem; color: var(--muted); }
+.deleteBtn { font-size: 0.7rem; padding: 0.25rem 0.5rem; background: #fee2e2; color: var(--error); border: none; border-radius: var(--radius); cursor: pointer; }
+
+.empty { text-align: center; padding: 3rem; color: var(--muted); }
+
+/* Send Modal */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 2rem; }
+.modalContent { background: white; border-radius: var(--radius-lg); padding: 2rem; width: 100%; max-width: 500px; }
+.modalContent h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.modalContent p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem; }
+.modalField { margin-bottom: 1rem; }
+.modalField label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.3rem; }
+.modalField input, .modalField select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.85rem; }
+.modalField input:focus, .modalField select:focus { outline: none; border-color: var(--secondary); }
+.modalActions { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem; }
+.cancelBtn { padding: 0.6rem 1.25rem; background: var(--background-alt); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; font-size: 0.85rem; }
+.confirmBtn { padding: 0.6rem 1.5rem; background: var(--secondary); color: white; border: none; border-radius: var(--radius); cursor: pointer; font-size: 0.85rem; font-weight: 500; }
+.confirmBtn:disabled { opacity: 0.5; cursor: not-allowed; }
