@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
+const rateLimit = require('express-rate-limit');
 
 const { configurePassport } = require('./config/passport');
 const healthRoutes = require('./routes/health.routes');
@@ -28,9 +29,26 @@ app.use(cors({
   credentials: true,
 }));
 app.use(morgan('dev'));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// Rate limiting
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 200, // 200 requests per 15 min
+  message: { status: 'error', message: 'Too many requests. Please try again later.' },
+});
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20, // 20 auth attempts per 15 min
+  message: { status: 'error', message: 'Too many authentication attempts.' },
+});
+
+app.use('/api/', generalLimiter);
+app.use('/api/auth/', authLimiter);
+app.use('/api/payments/', authLimiter);
 
 // Passport initialization
 configurePassport();

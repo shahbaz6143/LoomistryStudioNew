@@ -7,9 +7,41 @@ import { WishlistProvider } from '@/context/WishlistContext';
 import { CurrencyProvider } from '@/context/CurrencyContext';
 
 export const metadata = {
-  title: 'LoomistryStudio - Premium Handmade Rugs & Carpets',
-  description:
-    'Premium handmade rugs and carpets crafted by artisans. Shop hand-knotted, hand-tufted, and flatweave rugs for your home.',
+  title: {
+    default: 'LoomistryStudio - Premium Handmade Rugs & Carpets',
+    template: '%s | LoomistryStudio',
+  },
+  description: 'Shop premium handmade rugs and carpets crafted by master artisans in India. Hand-knotted, hand-tufted, and flatweave rugs for your home. Free shipping on orders above ₹10,000.',
+  keywords: ['handmade rugs', 'carpets', 'hand knotted rugs', 'persian rugs', 'indian rugs', 'wool carpets', 'area rugs', 'buy rugs online'],
+  authors: [{ name: 'LoomistryStudio' }],
+  creator: 'LoomistryStudio',
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: 'https://loomistrystudio.com',
+    siteName: 'LoomistryStudio',
+    title: 'LoomistryStudio - Premium Handmade Rugs & Carpets',
+    description: 'Shop premium handmade rugs and carpets crafted by master artisans in India.',
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1600166898405-da9535204843?w=1200&h=630&fit=crop',
+        width: 1200,
+        height: 630,
+        alt: 'LoomistryStudio - Handmade Rugs',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LoomistryStudio - Premium Handmade Rugs & Carpets',
+    description: 'Shop premium handmade rugs crafted by master artisans in India.',
+    images: ['https://images.unsplash.com/photo-1600166898405-da9535204843?w=1200&h=630&fit=crop'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  metadataBase: new URL('https://loomistrystudio.com'),
 };
 
 export default function RootLayout({ children }) {
