@@ -18,7 +18,7 @@ const orderItemSchema = new mongoose.Schema({
 const orderSchema = new mongoose.Schema(
   {
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    orderNumber: { type: String, required: true, unique: true },
+    orderNumber: { type: String, unique: true },
     items: [orderItemSchema],
     shippingAddress: {
       fullName: { type: String, required: true },
@@ -56,8 +56,8 @@ const orderSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Generate order number
-orderSchema.pre('save', function (next) {
+// Generate order number before validation
+orderSchema.pre('validate', function (next) {
   if (!this.orderNumber) {
     this.orderNumber = 'LS' + Date.now().toString(36).toUpperCase() + Math.random().toString(36).substring(2, 6).toUpperCase();
   }

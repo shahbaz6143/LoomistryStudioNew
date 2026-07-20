@@ -17,6 +17,18 @@ const {
   deleteCoupon,
   toggleCoupon,
 } = require('../controllers/coupon.controller');
+const {
+  getAllOrders,
+  getOrderDetail,
+  updateOrderStatus,
+  updateTracking,
+  getOrderStats,
+} = require('../controllers/admin.order.controller');
+const {
+  getAllReviews,
+  moderateReview,
+  deleteReview,
+} = require('../controllers/review.controller');
 
 const router = express.Router();
 
@@ -50,6 +62,20 @@ router.post('/coupons', requireRole('admin'), createCoupon);
 router.put('/coupons/:id', requireRole('admin'), updateCoupon);
 router.delete('/coupons/:id', requireRole('admin'), deleteCoupon);
 router.patch('/coupons/:id/toggle', requireRole('admin'), toggleCoupon);
+
+// ─── Order Management ────────────────────────────────────────────────────────
+
+router.get('/orders/stats', requireRole('admin', 'editor'), getOrderStats);
+router.get('/orders', requireRole('admin', 'editor'), getAllOrders);
+router.get('/orders/:id', requireRole('admin', 'editor'), getOrderDetail);
+router.put('/orders/:id/status', requireRole('admin'), updateOrderStatus);
+router.put('/orders/:id/tracking', requireRole('admin', 'editor'), updateTracking);
+
+// ─── Reviews (Moderation) ────────────────────────────────────────────────────
+
+router.get('/reviews', requireRole('admin', 'editor'), getAllReviews);
+router.put('/reviews/:id', requireRole('admin'), moderateReview);
+router.delete('/reviews/:id', requireRole('admin'), deleteReview);
 
 // ─── Media Upload ────────────────────────────────────────────────────────────
 

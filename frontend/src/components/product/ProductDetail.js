@@ -9,6 +9,7 @@ import { useWishlist } from '@/context/WishlistContext';
 import { useCurrency } from '@/context/CurrencyContext';
 import { getProductBySlug, getProducts } from '@/services/product.service';
 import ProductCard from './ProductCard';
+import ReviewSection from './ReviewSection';
 import styles from './ProductDetail.module.css';
 
 export default function ProductDetail({ slug }) {
@@ -309,6 +310,9 @@ export default function ProductDetail({ slug }) {
           </div>
         </div>
       </div>
+
+      {/* Reviews */}
+      <ReviewSection productId={product._id} avgRating={product.avgRating} reviewCount={product.reviewCount} />
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
