@@ -122,3 +122,30 @@
   font-size: 0.8rem;
   color: var(--muted);
 }
+
+@media (max-width: 768px) {
+  .orderCard {
+    padding: 1rem;
+  }
+
+  .orderHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .orderNum {
+    font-size: 0.8rem;
+  }
+
+  .orderFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .orderItem img {
+    width: 36px;
+    height: 36px;
+  }
+}

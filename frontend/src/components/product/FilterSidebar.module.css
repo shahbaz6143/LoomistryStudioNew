@@ -136,5 +136,29 @@
   .sidebar {
     position: static;
     max-height: none;
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .group h4 {
+    font-size: 0.75rem;
+  }
+
+  .options {
+    gap: 0.35rem;
+  }
+
+  .filterBtn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .priceRow {
+    flex-wrap: nowrap;
+  }
+
+  .priceInput {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.5rem;
   }
 }

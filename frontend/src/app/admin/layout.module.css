@@ -121,5 +121,42 @@
   .sidebar {
     position: static;
     height: auto;
+    flex-direction: row;
+    padding: 0.75rem 0;
+    overflow-x: auto;
+  }
+
+  .sidebarHeader {
+    display: none;
+  }
+
+  .sidebarNav {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    gap: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .navItem {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .navItemActive {
+    border-left: none;
+    border-bottom: 2px solid var(--secondary);
+    border-radius: 0;
+  }
+
+  .sidebarFooter {
+    display: none;
+  }
+
+  .content {
+    padding: 1rem;
   }
 }

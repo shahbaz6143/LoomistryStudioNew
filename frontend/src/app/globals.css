@@ -120,3 +120,58 @@ input, select, textarea {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* ─── Mobile Responsive ────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  :root {
+    --max-width: 100%;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ─── PWA Install Prompt ───────────────────────────────────────────────────── */
+
+@media (display-mode: standalone) {
+  /* Styles for when app is installed as PWA */
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

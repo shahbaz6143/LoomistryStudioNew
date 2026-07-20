@@ -212,4 +212,38 @@
   .layout {
     grid-template-columns: 1fr;
   }
+
+  .header h1 {
+    font-size: 1.25rem;
+  }
+
+  .cartItem {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .itemImg {
+    width: 64px;
+    height: 64px;
+  }
+
+  .itemActions {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .summary {
+    position: sticky;
+    bottom: 0;
+    border-radius: var(--radius) var(--radius) 0 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  }
+
+  .checkoutBtn {
+    margin-top: 1rem;
+  }
 }

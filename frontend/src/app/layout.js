@@ -1,6 +1,7 @@
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import WhatsAppWidget from '@/components/layout/WhatsAppWidget';
 import { AuthProvider } from '@/context/AuthContext';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
@@ -48,6 +49,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="theme-color" content="#1a1a1a" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="manifest" href="/manifest.json" />
         <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
       </head>
       <body>
@@ -58,6 +64,7 @@ export default function RootLayout({ children }) {
                 <Header />
                 <main>{children}</main>
                 <Footer />
+                <WhatsAppWidget />
               </WishlistProvider>
             </CartProvider>
           </CurrencyProvider>

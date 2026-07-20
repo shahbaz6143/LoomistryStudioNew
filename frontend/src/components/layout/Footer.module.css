@@ -198,8 +198,9 @@
   }
 
   .trust {
-    gap: 1.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   .bottom {
@@ -210,5 +211,34 @@
 
   .newsletterForm {
     flex-direction: column;
+  }
+
+  .newsletter h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .brand {
+    grid-column: span 1;
+  }
+
+  .footer {
+    padding: 3rem 0 1.5rem;
+  }
+
+  .trust {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .trustItem {
+    text-align: left;
   }
 }

@@ -141,13 +141,13 @@ const sendCatalogueEmail = async ({ to, clientName, subject, campaignName = 'Art
               <table cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="padding:0 12px;">
-                    <a href="https://instagram.com/loomistrystudio" style="color:#555;font-size:12px;font-family:Arial,sans-serif;text-decoration:none;">&#9679; Instagram</a>
+                    <a href="https://www.instagram.com/loomistrystudio/" style="color:#555;font-size:12px;font-family:Arial,sans-serif;text-decoration:none;">&#9679; Instagram</a>
                   </td>
                   <td style="padding:0 12px;">
-                    <a href="https://linkedin.com" style="color:#555;font-size:12px;font-family:Arial,sans-serif;text-decoration:none;">&#9679; LinkedIn</a>
+                    <a href="https://in.pinterest.com/loomistrystudio/" style="color:#555;font-size:12px;font-family:Arial,sans-serif;text-decoration:none;">&#9679; Pinterest</a>
                   </td>
                   <td style="padding:0 12px;">
-                    <a href="https://facebook.com" style="color:#555;font-size:12px;font-family:Arial,sans-serif;text-decoration:none;">&#9679; Facebook</a>
+                    <a href="https://www.facebook.com/profile.php?id=61588571769641" style="color:#555;font-size:12px;font-family:Arial,sans-serif;text-decoration:none;">&#9679; Facebook</a>
                   </td>
                   <td style="padding:0 12px;">
                     <a href="${SITE_URL}" style="color:#555;font-size:12px;font-family:Arial,sans-serif;text-decoration:none;">&#9679; Website</a>
