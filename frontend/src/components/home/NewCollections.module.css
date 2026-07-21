@@ -1,0 +1,189 @@
+.section {
+  padding: 1.5rem 1.5rem;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Large left card — spans full height */
+.cardLarge {
+  grid-row: 1 / 3;
+  position: relative;
+  overflow: hidden;
+  min-height: 620px;
+  display: block;
+}
+
+/* Right column */
+.rightCol {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  grid-row: 1 / 3;
+}
+
+/* Dark header block (top right) */
+.headerCard {
+  background: #3d3d3b;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.headerLabel {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.45);
+  font-style: italic;
+  font-family: var(--font-heading);
+  margin-bottom: 0.15rem;
+}
+
+.headerTitle {
+  font-family: var(--font-heading);
+  font-size: 3.25rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+/* Bottom right — two cards side by side */
+.bottomRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+/* Image cards shared */
+.cardLarge .imageWrap,
+.cardSmall .imageWrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.cardLarge .image,
+.cardSmall .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cardLarge:hover .image,
+.cardSmall:hover .image {
+  transform: scale(1.06);
+}
+
+/* Small cards */
+.cardSmall {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+/* Labels on image cards */
+.cardLabel {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: white;
+  z-index: 2;
+}
+
+.cardName {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.cardArrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.cardLarge:hover .cardArrow,
+.cardSmall:hover .cardArrow {
+  background: white;
+  border-color: white;
+}
+
+.cardLarge:hover .cardArrow svg,
+.cardSmall:hover .cardArrow svg {
+  stroke: var(--primary);
+}
+
+/* Gradient for readability */
+.cardLarge::after,
+.cardSmall::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .cardLarge {
+    grid-row: auto;
+    min-height: 320px;
+  }
+
+  .rightCol {
+    grid-row: auto;
+    grid-template-rows: auto auto;
+  }
+
+  .headerCard {
+    padding: 2rem;
+  }
+
+  .headerTitle {
+    font-size: 2rem;
+  }
+
+  .bottomRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cardSmall {
+    min-height: 200px;
+  }
+
+  .cardLabel {
+    bottom: 1.25rem;
+    left: 1.25rem;
+  }
+
+  .cardName {
+    font-size: 0.7rem;
+  }
+}

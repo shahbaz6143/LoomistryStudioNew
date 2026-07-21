@@ -1,0 +1,245 @@
+.page {
+  padding: 4rem 0 6rem;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--secondary);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Steps */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.step {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: var(--background-alt);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+
+.step:hover {
+  border-color: var(--secondary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.stepNumber {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.step h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Form */
+.formSection {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+}
+
+.formTitle {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.formSubtitle {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.field {
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: var(--primary);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color var(--transition);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--secondary);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.colorOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.colorChip {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.colorChip:hover {
+  transform: scale(1.15);
+}
+
+.colorChipActive {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary);
+}
+
+.uploadArea {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.uploadArea:hover {
+  border-color: var(--secondary);
+  background: var(--background-alt);
+}
+
+.uploadArea p {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.uploadIcon {
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius);
+  margin-top: 1.5rem;
+  transition: background var(--transition);
+}
+
+.submitBtn:hover {
+  background: var(--secondary);
+}
+
+@media (max-width: 768px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .formSection {
+    padding: 2rem 1.5rem;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}

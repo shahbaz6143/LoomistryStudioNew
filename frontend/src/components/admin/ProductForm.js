@@ -12,7 +12,7 @@ const CATEGORIES = [
 
 const COLLECTIONS = [
   'bestsellers', 'new-arrivals', 'living-room',
-  'bedroom', 'dining-room', 'deal-of-the-week',
+  'bedroom', 'dining-room', 'kids-room', 'deal-of-the-week',
 ];
 
 const SHAPES = ['rectangle', 'round', 'square', 'runner', 'oval'];

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
@@ -8,32 +8,110 @@ import { useWishlist } from '@/context/WishlistContext';
 import SearchModal from './SearchModal';
 import styles from './Header.module.css';
 
+const ANNOUNCEMENTS = [
+  '✨ SUMMER SALE • UP TO 60% OFF SITEWIDE • FREE WORLDWIDE SHIPPING',
+  '🧶 Handmade Luxury Rugs • Save Up to 60% • Limited Stock',
+  '🚚 Free Shipping on All Orders Above ₹10,000 • Handcrafted in India',
+];
+
+const SHOP_LINKS = [
+  { label: 'Living Room Rugs', href: '/products?collection=living-room' },
+  { label: 'Bedroom Rugs', href: '/products?collection=bedroom' },
+  { label: 'Dining Rugs', href: '/products?collection=dining-room' },
+  { label: 'Hallway Runners', href: '/products?category=runner' },
+  { label: 'Round Rugs', href: '/products?shape=round' },
+  { label: 'Oval Rugs', href: '/products?shape=oval' },
+  { label: 'Kids Rugs', href: '/products?collection=kids-room' },
+  { label: 'Custom Rugs', href: '/products' },
+];
+
+const COLLECTION_LINKS = [
+  { label: 'Abstract Rugs', href: '/products?category=abstract' },
+  { label: 'Organic Collection', href: '/products?material=Jute' },
+  { label: 'Botanical Collection', href: '/products?category=traditional' },
+  { label: 'Geometric Collection', href: '/products?category=modern' },
+  { label: 'Wave Collection', href: '/products?collection=new-arrivals' },
+  { label: 'Scandinavian', href: '/products?category=flatweave' },
+  { label: 'Luxury Collection', href: '/products?category=persian' },
+  { label: 'Kids Collection', href: '/products?collection=kids-room' },
+  { label: 'Animal Collection', href: '/products?collection=bestsellers' },
+  { label: 'Statement Rugs', href: '/products?category=hand-knotted' },
+];
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [announcementIndex, setAnnouncementIndex] = useState(0);
+  const [shopDropdown, setShopDropdown] = useState(false);
+  const [collectionsDropdown, setCollectionsDropdown] = useState(false);
   const { user, loading, logout } = useAuth();
   const { itemCount: cartCount } = useCart();
   const { itemCount: wishlistCount } = useWishlist();
 
+  // Rotate announcements
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setAnnouncementIndex((prev) => (prev + 1) % ANNOUNCEMENTS.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <>
-      {/* Announcement Bar */}
+      {/* Announcement Bar — Rotating */}
       <div className={styles.announcement}>
-        Free Shipping on orders above <strong>₹10,000</strong> &nbsp;|&nbsp; Handcrafted with love in India
+        <span key={announcementIndex} className={styles.announcementText}>
+          {ANNOUNCEMENTS[announcementIndex]}
+        </span>
       </div>
 
       <header className={styles.header}>
         <div className={styles.container}>
           <Link href="/" className={styles.logo}>
-            LoomistryStudio
+            <img src="/logo.png" alt="LoomistryStudio" className={styles.logoImg} />
           </Link>
 
           <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
-            <Link href="/" className={styles.navLink} onClick={() => setMenuOpen(false)}>Home</Link>
-            <Link href="/products" className={styles.navLink} onClick={() => setMenuOpen(false)}>Shop All</Link>
+            {/* Shop Dropdown */}
+            <div
+              className={styles.navItem}
+              onMouseEnter={() => setShopDropdown(true)}
+              onMouseLeave={() => setShopDropdown(false)}
+            >
+              <Link href="/products" className={styles.navLink}>Shop</Link>
+              {shopDropdown && (
+                <div className={styles.dropdown}>
+                  {SHOP_LINKS.map((item) => (
+                    <Link key={item.href} href={item.href} className={styles.dropdownLink} onClick={() => setMenuOpen(false)}>
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Collections Dropdown */}
+            <div
+              className={styles.navItem}
+              onMouseEnter={() => setCollectionsDropdown(true)}
+              onMouseLeave={() => setCollectionsDropdown(false)}
+            >
+              <Link href="/products?collection=new-arrivals" className={styles.navLink}>Collections</Link>
+              {collectionsDropdown && (
+                <div className={styles.dropdown}>
+                  {COLLECTION_LINKS.map((item) => (
+                    <Link key={item.href} href={item.href} className={styles.dropdownLink} onClick={() => setMenuOpen(false)}>
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link href="/custom-rugs" className={styles.navLink} onClick={() => setMenuOpen(false)}>Custom Rugs</Link>
             <Link href="/products?collection=new-arrivals" className={styles.navLink} onClick={() => setMenuOpen(false)}>New Arrivals</Link>
             <Link href="/products?collection=bestsellers" className={styles.navLink} onClick={() => setMenuOpen(false)}>Bestsellers</Link>
-            <Link href="/products?category=hand-knotted" className={styles.navLink} onClick={() => setMenuOpen(false)}>Hand Knotted</Link>
+            <Link href="/about" className={styles.navLink} onClick={() => setMenuOpen(false)}>About</Link>
           </nav>
 
           <div className={styles.actions}>

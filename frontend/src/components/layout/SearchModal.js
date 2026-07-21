@@ -54,7 +54,7 @@ export default function SearchModal({ isOpen, onClose }) {
             ref={inputRef}
             type="text"
             className={styles.input}
-            placeholder="Search rugs, categories, materials..."
+            placeholder="Search rugs..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />

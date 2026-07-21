@@ -1,118 +1,106 @@
 .hero {
-  height: 85vh;
-  min-height: 600px;
-  max-height: 900px;
-  background: url('https://images.unsplash.com/photo-1600166898405-da9535204843?w=1800&q=85') center/cover no-repeat;
   position: relative;
+  height: 85vh;
+  min-height: 550px;
+  max-height: 900px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 1.5s ease, transform 8s ease;
+}
+
+.active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(26, 26, 26, 0.65) 0%, rgba(26, 26, 26, 0.2) 70%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  padding: 6rem 4rem;
+  z-index: 2;
 }
 
 .content {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 2rem;
-  color: white;
+  animation: fadeIn 0.8s ease;
 }
 
-.subtitle {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-weight: 500;
-  margin-bottom: 1.25rem;
-  color: var(--secondary-light);
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: 4rem;
-  font-weight: 500;
-  line-height: 1.1;
-  max-width: 600px;
-  margin-bottom: 1.5rem;
-  letter-spacing: -1px;
-}
-
-.description {
-  font-size: 1.05rem;
-  max-width: 480px;
-  opacity: 0.85;
-  margin-bottom: 2.5rem;
-  line-height: 1.7;
+  font-size: 3.5rem;
   font-weight: 300;
+  color: white;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
 }
 
 .cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2.5rem;
-  background: var(--secondary);
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border: 1px solid rgba(255,255,255,0.6);
   color: white;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  border-radius: var(--radius);
   transition: all var(--transition);
 }
 
 .cta:hover {
-  background: var(--secondary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(184, 134, 11, 0.3);
+  background: white;
+  color: var(--primary);
 }
 
-/* Scroll indicator */
-.scroll {
+.indicators {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 0.5rem;
+  z-index: 5;
 }
 
-.scrollLine {
-  width: 1px;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.3);
-  animation: scrollPulse 2s infinite;
+.dot {
+  width: 40px;
+  height: 3px;
+  background: rgba(255,255,255,0.3);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
 }
 
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+.dotActive {
+  background: white;
 }
 
 @media (max-width: 768px) {
   .hero {
     height: 70vh;
-    min-height: 500px;
+    min-height: 450px;
+  }
+
+  .overlay {
+    padding: 3rem 1.5rem;
   }
 
   .title {
-    font-size: 2.5rem;
-  }
-
-  .description {
-    font-size: 0.95rem;
-  }
-
-  .scroll {
-    display: none;
+    font-size: 2rem;
   }
 }

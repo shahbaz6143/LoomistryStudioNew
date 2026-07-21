@@ -1,6 +1,6 @@
 .section {
   background: var(--background-warm);
-  padding: 5rem 0;
+  padding: 6rem 0;
 }
 
 .container {
@@ -11,21 +11,19 @@
 }
 
 .imageCol {
-  position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
 .imageCol img {
   width: 100%;
-  height: 500px;
+  height: 480px;
   object-fit: cover;
-  border-radius: var(--radius-lg);
-  transition: transform 0.6s ease;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .imageCol:hover img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .infoCol {
@@ -37,28 +35,26 @@
   background: var(--secondary);
   color: white;
   font-size: 0.65rem;
-  font-weight: 700;
+  font-weight: 600;
   padding: 0.35rem 0.85rem;
-  border-radius: 2px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: 2.25rem;
-  font-weight: 500;
-  line-height: 1.2;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.15;
   margin-bottom: 1.25rem;
-  letter-spacing: -0.5px;
 }
 
 .description {
   color: var(--text-secondary);
-  line-height: 1.8;
+  line-height: 1.9;
   margin-bottom: 2rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .pricing {
@@ -67,37 +63,32 @@
 
 .price {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: 2.75rem;
+  font-weight: 500;
   color: var(--secondary-dark);
 }
 
 .size {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--muted);
   margin-top: 0.25rem;
 }
 
 .cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2.5rem;
+  display: inline-block;
+  padding: 0.85rem 2.5rem;
   background: var(--primary);
   color: white;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  border-radius: var(--radius);
   transition: all var(--transition);
 }
 
 .cta:hover {
   background: var(--secondary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
 }
 
 @media (max-width: 768px) {
@@ -115,6 +106,6 @@
   }
 
   .price {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 }

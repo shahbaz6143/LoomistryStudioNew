@@ -1,31 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Colors */
-  --primary: #1a1a1a;
-  --primary-light: #333333;
-  --secondary: #b8860b;
-  --secondary-light: #d4a437;
-  --secondary-dark: #8b6508;
-  --accent: #5c3d1e;
+  /* Colors — Cocoon-inspired palette */
+  --primary: #2d2d2d;
+  --primary-light: #3d3d3d;
+  --primary-dark: #1a1a1a;
+  --secondary: #8b7355;
+  --secondary-light: #a08b6d;
+  --secondary-dark: #6b5840;
+  --accent: #4a6741;
   --background: #ffffff;
-  --background-alt: #f9f7f4;
-  --background-warm: #faf8f5;
-  --foreground: #1a1a1a;
-  --text-secondary: #555555;
-  --muted: #888888;
-  --border: #e8e4df;
+  --background-alt: #f7f5f2;
+  --background-warm: #f3f0eb;
+  --background-dark: #3d3d3b;
+  --foreground: #2d2d2d;
+  --text-secondary: #5a5a5a;
+  --muted: #8a8a8a;
+  --border: #e5e0da;
   --border-light: #f0ece7;
-  --success: #2d8f4e;
+  --success: #4a6741;
   --error: #c0392b;
   --warning: #d4a437;
-  --radius: 4px;
-  --radius-lg: 8px;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
-  --max-width: 1320px;
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.1);
+  --max-width: 1400px;
+  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Typography */
   --font-heading: 'Cormorant Garamond', Georgia, serif;
@@ -50,6 +52,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 a {
@@ -81,31 +84,32 @@ input, select, textarea {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2.5rem;
 }
 
 .section {
-  padding: 5rem 0;
+  padding: 6rem 0;
 }
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: 2.25rem;
-  font-weight: 500;
+  font-size: 2.75rem;
+  font-weight: 400;
   color: var(--primary);
   text-align: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   letter-spacing: -0.5px;
 }
 
 .section-subtitle {
   text-align: center;
   color: var(--muted);
-  font-size: 0.95rem;
-  margin-bottom: 3rem;
-  max-width: 500px;
+  font-size: 0.9rem;
+  margin-bottom: 3.5rem;
+  max-width: 480px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.7;
 }
 
 /* Utility */
@@ -133,32 +137,26 @@ input, select, textarea {
   }
 
   .container {
-    padding: 0 1rem;
+    padding: 0 1.25rem;
   }
 
   .section {
-    padding: 3rem 0;
+    padding: 3.5rem 0;
   }
 
   .section-title {
     font-size: 1.75rem;
-    margin-bottom: 0.5rem;
   }
 
   .section-subtitle {
     font-size: 0.85rem;
     margin-bottom: 2rem;
-    padding: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 0.75rem;
-  }
-
-  .section {
-    padding: 2.5rem 0;
+    padding: 0 1rem;
   }
 
   .section-title {
@@ -166,10 +164,7 @@ input, select, textarea {
   }
 }
 
-/* ─── PWA Install Prompt ───────────────────────────────────────────────────── */
-
 @media (display-mode: standalone) {
-  /* Styles for when app is installed as PWA */
   body {
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);

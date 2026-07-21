@@ -1,19 +1,32 @@
 import HeroBanner from '@/components/home/HeroBanner';
+import ShopByRoom from '@/components/home/ShopByRoom';
+import NewCollections from '@/components/home/NewCollections';
 import BestSellers from '@/components/home/BestSellers';
 import Craftsmanship from '@/components/home/Craftsmanship';
-import CategoryGrid from '@/components/home/CategoryGrid';
 import DealOfWeek from '@/components/home/DealOfWeek';
 import Collections from '@/components/home/Collections';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function Home() {
   return (
     <>
       <HeroBanner />
-      <BestSellers />
-      <Craftsmanship />
-      <CategoryGrid />
-      <DealOfWeek />
-      <Collections />
+      <ShopByRoom />
+      <ScrollReveal>
+        <NewCollections />
+      </ScrollReveal>
+      <ScrollReveal>
+        <BestSellers />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Craftsmanship />
+      </ScrollReveal>
+      <ScrollReveal>
+        <DealOfWeek />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Collections />
+      </ScrollReveal>
     </>
   );
 }

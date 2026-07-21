@@ -1,38 +1,38 @@
 .section {
-  padding: 5rem 0;
+  padding: 6rem 0;
   background: var(--background);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .viewAll {
   display: block;
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 3.5rem;
 }
 
 .viewAllLink {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: var(--secondary);
+  color: var(--primary);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 0.75rem 2rem;
-  border: 1px solid var(--secondary);
-  border-radius: var(--radius);
+  letter-spacing: 1.5px;
+  padding: 0.85rem 2.5rem;
+  border: 1px solid var(--border);
   transition: all var(--transition);
 }
 
 .viewAllLink:hover {
-  background: var(--secondary);
+  background: var(--primary);
   color: white;
+  border-color: var(--primary);
 }
 
 .skeleton {
@@ -49,13 +49,11 @@
 }
 
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 768px) {
-  .grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 480px) {
-  .grid { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+
+  .section { padding: 4rem 0; }
 }
