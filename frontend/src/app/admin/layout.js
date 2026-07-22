@@ -32,6 +32,7 @@ export default function AdminLayout({ children }) {
     { href: '/admin/clients', label: 'Clients', icon: '👥' },
     { href: '/admin/coupons', label: 'Coupons', icon: '🎟️' },
     { href: '/admin/reviews', label: 'Reviews', icon: '⭐' },
+    { href: '/admin/settings', label: 'Settings', icon: '⚙️' },
   ];
 
   return (

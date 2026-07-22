@@ -1,0 +1,126 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.logoWrap {
+  margin-bottom: 0.75rem;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.brand {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.message {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.confirmBtn,
+.cancelBtn {
+  padding: 0.7rem 1.75rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.confirmBtn {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.confirmBtn:hover {
+  background: var(--secondary);
+}
+
+.cancelBtn {
+  background: var(--background-alt);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.cancelBtn:hover {
+  background: var(--border);
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 2rem 1.5rem 1.5rem;
+    max-width: 340px;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .buttons {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
+
+  .confirmBtn,
+  .cancelBtn {
+    width: 100%;
+  }
+}

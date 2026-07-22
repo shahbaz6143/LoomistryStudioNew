@@ -53,10 +53,9 @@
 }
 
 .logoImg {
-  height: 40px;
+  height: 56px;
   width: auto;
   object-fit: contain;
-  border-radius: 50%;
 }
 
 /* Navigation */

@@ -6,6 +6,8 @@ import { AuthProvider } from '@/context/AuthContext';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { CurrencyProvider } from '@/context/CurrencyContext';
+import { BrandProvider } from '@/context/BrandContext';
+import { ToastProvider } from '@/components/ui/Toast';
 
 export const metadata = {
   title: {
@@ -58,16 +60,20 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <AuthProvider>
-          <CurrencyProvider>
-            <CartProvider>
-              <WishlistProvider>
-                <Header />
-                <main>{children}</main>
-                <Footer />
-                <WhatsAppWidget />
-              </WishlistProvider>
-            </CartProvider>
-          </CurrencyProvider>
+          <BrandProvider>
+            <ToastProvider>
+              <CurrencyProvider>
+                <CartProvider>
+                  <WishlistProvider>
+                    <Header />
+                    <main>{children}</main>
+                    <Footer />
+                    <WhatsAppWidget />
+                  </WishlistProvider>
+                </CartProvider>
+              </CurrencyProvider>
+            </ToastProvider>
+          </BrandProvider>
         </AuthProvider>
       </body>
     </html>

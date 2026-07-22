@@ -101,6 +101,13 @@ router.put('/catalogues/:id', requireRole('admin', 'editor'), updateCatalogue);
 router.delete('/catalogues/:id', requireRole('admin'), deleteCatalogue);
 router.post('/catalogues/:id/send', requireRole('admin', 'editor'), sendCatalogueToClients);
 
+// ─── Settings ────────────────────────────────────────────────────────────────
+
+const { updateBranding, getAllSettings } = require('../controllers/settings.controller');
+
+router.get('/settings', requireRole('admin'), getAllSettings);
+router.put('/settings/branding', requireRole('admin'), updateBranding);
+
 // ─── Client Contacts ─────────────────────────────────────────────────────────
 
 const {

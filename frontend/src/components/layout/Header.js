@@ -5,7 +5,9 @@ import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
+import { useBrand } from '@/context/BrandContext';
 import SearchModal from './SearchModal';
+import ProfileDropdown from './ProfileDropdown';
 import styles from './Header.module.css';
 
 const ANNOUNCEMENTS = [
@@ -44,9 +46,10 @@ export default function Header() {
   const [announcementIndex, setAnnouncementIndex] = useState(0);
   const [shopDropdown, setShopDropdown] = useState(false);
   const [collectionsDropdown, setCollectionsDropdown] = useState(false);
-  const { user, loading, logout } = useAuth();
+  const { user, loading } = useAuth();
   const { itemCount: cartCount } = useCart();
   const { itemCount: wishlistCount } = useWishlist();
+  const brand = useBrand();
 
   // Rotate announcements
   useEffect(() => {
@@ -68,7 +71,7 @@ export default function Header() {
       <header className={styles.header}>
         <div className={styles.container}>
           <Link href="/" className={styles.logo}>
-            <img src="/logo.png" alt="LoomistryStudio" className={styles.logoImg} />
+            <img src={brand.logo} alt={brand.name} className={styles.logoImg} />
           </Link>
 
           <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
@@ -146,11 +149,7 @@ export default function Header() {
                     {(user.role === 'admin' || user.role === 'editor') && (
                       <Link href="/admin" className={styles.adminLink}>CMS</Link>
                     )}
-                    {user.avatar && (
-                      <img src={user.avatar} alt={user.name} className={styles.avatar} />
-                    )}
-                    <span className={styles.userName}>{user.name?.split(' ')[0]}</span>
-                    <button onClick={logout} className={styles.logoutBtn}>Logout</button>
+                    <ProfileDropdown />
                   </div>
                 ) : (
                   <Link href="/auth/login" className={styles.loginBtn}>Sign In</Link>
