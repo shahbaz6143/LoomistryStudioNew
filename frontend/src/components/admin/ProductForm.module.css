@@ -1,8 +1,9 @@
 .pageTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 500;
   color: var(--primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .form {
@@ -11,41 +12,41 @@
 
 .section {
   background: white;
-  border-radius: var(--radius);
-  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
   margin-bottom: 1.5rem;
-  box-shadow: var(--shadow);
 }
 
 .section h2 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--primary);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .field {
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 
 .field label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--foreground);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
 }
 
 .field input,
 .field select,
 .field textarea {
   width: 100%;
-  padding: 0.6rem 0.75rem;
+  padding: 0.65rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-family: inherit;
   transition: border-color 0.2s;
 }
@@ -63,50 +64,96 @@
 
 .row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem;
 }
 
 .hint {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--muted);
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
 }
 
-/* Checkboxes */
+/* Checkboxes — clean pill style */
 .checkboxGroup {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.chip:hover {
+  border-color: var(--secondary);
+  color: var(--primary);
+}
+
+.chipActive {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.chipActive:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: white;
+}
+
+.chipCheck {
+  font-size: 0.7rem;
+  font-weight: 700;
 }
 
 .checkbox {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   cursor: pointer;
-  text-transform: capitalize;
 }
 
 .checkbox input {
-  width: auto;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--secondary);
 }
 
-/* Images */
+/* Images Grid */
 .imageGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.6rem;
   margin-top: 0.75rem;
 }
 
 .imageItem {
   position: relative;
-  width: 100px;
-  height: 100px;
+  aspect-ratio: 1;
   border-radius: 6px;
   overflow: hidden;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.imageItem:hover {
+  border-color: var(--secondary);
 }
 
 .imageItem img {
@@ -115,13 +162,67 @@
   object-fit: cover;
 }
 
+.thumbnailActive {
+  border-color: var(--secondary) !important;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--secondary);
+}
+
+.thumbBadge {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  background: var(--secondary);
+  color: white;
+  font-size: 0.5rem;
+  font-weight: 700;
+  padding: 2px 4px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+
 .removeImg {
   position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 22px;
-  height: 22px;
-  background: rgba(0, 0, 0, 0.6);
+  top: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.removeImg:hover {
+  background: var(--error);
+}
+
+/* Video Preview */
+.videoPreview {
+  margin-top: 0.75rem;
+  display: inline-block;
+  position: relative;
+}
+
+.videoPreview video {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.removeVideo {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.7);
   color: white;
   border: none;
   border-radius: 50%;
@@ -130,22 +231,64 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
+  z-index: 2;
+}
+
+.removeVideo:hover {
+  background: var(--error);
+}
+
+/* Progress Bar */
+.progressBar {
+  margin-top: 0.6rem;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary), var(--success));
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  position: absolute;
+  top: -18px;
+  right: 0;
+  font-size: 0.68rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Error */
+.error {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.72rem;
+  color: var(--error);
+  font-weight: 500;
 }
 
 /* Sizes */
 .sizeRow {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   margin-bottom: 0.5rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .sizeRow input {
   flex: 1;
-  padding: 0.5rem;
+  padding: 0.5rem 0.6rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   min-width: 0;
 }
 
@@ -155,15 +298,18 @@
 }
 
 .removeSizeBtn {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   background: #fee2e2;
   color: var(--error);
   border: none;
   border-radius: 50%;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .addSizeBtn {
@@ -172,7 +318,7 @@
   background: var(--background-alt);
   border: 1px dashed var(--border);
   border-radius: var(--radius);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--muted);
   cursor: pointer;
 }
@@ -187,7 +333,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
 }
 
 .cancelBtn {
@@ -195,7 +341,7 @@
   background: var(--background-alt);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--muted);
   cursor: pointer;
 }
@@ -210,17 +356,86 @@
   color: white;
   border: none;
   border-radius: var(--radius);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .submitBtn:hover {
-  background: var(--primary-light);
+  background: var(--secondary);
 }
 
 .submitBtn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .form {
+    max-width: 100%;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .sizeRow {
+    flex-wrap: wrap;
+  }
+
+  .sizeRow input {
+    min-width: calc(50% - 0.4rem);
+    flex: none;
+    width: calc(50% - 0.4rem);
+  }
+
+  .imageGrid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  }
+
+  .checkboxGroup {
+    gap: 0.4rem;
+  }
+
+  .chip {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .submitRow {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+  }
+
+  .cancelBtn,
+  .submitBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageTitle {
+    font-size: 1.4rem;
+  }
+
+  .section {
+    padding: 1rem;
+  }
+
+  .imageGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sizeRow input {
+    width: 100%;
+    min-width: 100%;
+  }
 }

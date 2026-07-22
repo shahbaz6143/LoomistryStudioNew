@@ -1,0 +1,54 @@
+.page { padding: 3rem 0 6rem; max-width: 800px; margin: 0 auto; }
+.title { font-family: var(--font-heading); font-size: 2rem; font-weight: 400; color: var(--primary); margin-bottom: 2rem; }
+
+/* Tabs */
+.tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+.tab { padding: 0.85rem 1.75rem; font-size: 0.85rem; font-weight: 500; color: var(--muted); background: none; border: none; cursor: pointer; position: relative; }
+.tab::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: var(--secondary); transform: scaleX(0); transition: transform 0.2s; }
+.tabActive { color: var(--primary); }
+.tabActive::after { transform: scaleX(1); }
+
+/* Cards */
+.grid { display: flex; flex-direction: column; gap: 1rem; }
+.card { display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 1.5rem; background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); transition: border-color 0.2s; }
+.card:hover { border-color: var(--secondary); }
+.cardIcon { width: 48px; height: 32px; background: var(--background-alt); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: var(--primary); text-transform: uppercase; flex-shrink: 0; }
+.cardInfo { flex: 1; }
+.cardInfo h4 { font-size: 0.9rem; font-weight: 600; color: var(--primary); }
+.cardInfo p { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+.defaultBadge { font-size: 0.6rem; background: var(--success); color: white; padding: 0.2rem 0.5rem; border-radius: 3px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.deleteBtn { background: none; color: var(--muted); padding: 0.5rem; border-radius: 50%; }
+.deleteBtn:hover { background: #fef2f2; color: var(--error); }
+
+/* Address Cards */
+.addressCard { padding: 1.25rem 1.5rem; background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.addressCard:hover { border-color: var(--secondary); }
+.addressHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.addressHeader h4 { font-size: 0.9rem; font-weight: 600; }
+.addressBody { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; }
+.addressActions { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+.addressActions button { font-size: 0.72rem; padding: 0.3rem 0.6rem; border-radius: var(--radius); cursor: pointer; border: none; }
+.editBtn { background: var(--background-alt); color: var(--primary); }
+.rmBtn { background: #fef2f2; color: var(--error); }
+
+/* Add Form */
+.addBtn { margin-bottom: 1.5rem; padding: 0.65rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: var(--radius); font-size: 0.8rem; font-weight: 500; cursor: pointer; }
+.addBtn:hover { background: var(--secondary); }
+
+.form { background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; }
+.form h3 { font-size: 1rem; margin-bottom: 1rem; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+.field { margin-bottom: 0.75rem; }
+.field label { display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.3rem; }
+.field input, .field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.85rem; }
+.field input:focus, .field select:focus { outline: none; border-color: var(--secondary); }
+.formActions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+.saveBtn { padding: 0.6rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: var(--radius); font-size: 0.8rem; cursor: pointer; }
+.cancelBtn { padding: 0.6rem 1.5rem; background: var(--background-alt); color: var(--text-secondary); border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.8rem; cursor: pointer; }
+
+.empty { text-align: center; padding: 3rem; color: var(--muted); font-size: 0.9rem; }
+
+@media (max-width: 768px) {
+  .row { grid-template-columns: 1fr; }
+  .tabs { overflow-x: auto; }
+}

@@ -20,6 +20,7 @@ const couponRoutes = require('./routes/coupon.routes');
 const reviewRoutes = require('./routes/review.routes');
 const catalogueRoutes = require('./routes/catalogue.routes');
 const settingsRoutes = require('./routes/settings.routes');
+const accountRoutes = require('./routes/account.routes');
 const { notFoundHandler, errorHandler } = require('./middleware/error.middleware');
 
 const app = express();
@@ -71,6 +72,7 @@ app.use('/api/coupons', couponRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/catalogues', catalogueRoutes);
 app.use('/api/settings', settingsRoutes);
+app.use('/api/account', accountRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Error handling

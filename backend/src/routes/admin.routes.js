@@ -108,6 +108,62 @@ const { updateBranding, getAllSettings } = require('../controllers/settings.cont
 router.get('/settings', requireRole('admin'), getAllSettings);
 router.put('/settings/branding', requireRole('admin'), updateBranding);
 
+// ─── Users ───────────────────────────────────────────────────────────────────
+
+const User = require('../models/user.model');
+
+router.get('/users', requireRole('admin'), async (req, res) => {
+  try {
+    const users = await User.find().select('-refreshToken -__v').sort({ createdAt: -1 });
+    res.status(200).json({ status: 'success', data: users });
+  } catch (error) {
+    res.status(500).json({ status: 'error', message: error.message });
+  }
+});
+
+router.put('/users/:id/role', requireRole('admin'), async (req, res) => {
+  try {
+    const { role } = req.body;
+    const validRoles = ['admin', 'editor', 'buyer'];
+    if (!role || !validRoles.includes(role)) {
+      return res.status(400).json({ status: 'error', message: `Role must be one of: ${validRoles.join(', ')}` });
+    }
+    const user = await User.findByIdAndUpdate(req.params.id, { role }, { new: true }).select('-refreshToken -__v');
+    if (!user) return res.status(404).json({ status: 'error', message: 'User not found' });
+    res.status(200).json({ status: 'success', message: `Role updated to "${role}"`, data: user });
+  } catch (error) {
+    res.status(500).json({ status: 'error', message: error.message });
+  }
+});
+
+router.post('/team/invite', requireRole('admin'), async (req, res) => {
+  try {
+    const { email, role } = req.body;
+    if (!email || !role) {
+      return res.status(400).json({ status: 'error', message: 'Email and role are required' });
+    }
+    if (!['admin', 'editor'].includes(role)) {
+      return res.status(400).json({ status: 'error', message: 'Role must be admin or editor' });
+    }
+
+    const user = await User.findOne({ email: email.toLowerCase() });
+    if (!user) {
+      return res.status(404).json({ status: 'error', message: 'No account found with this email. The person must sign up first (via Google/Facebook/Twitter), then you can add them.' });
+    }
+
+    if (user.role === role) {
+      return res.status(400).json({ status: 'error', message: `${user.name || email} is already a "${role}".` });
+    }
+
+    user.role = role;
+    await user.save();
+
+    res.status(200).json({ status: 'success', message: `${user.name || email} has been made "${role}"`, data: user });
+  } catch (error) {
+    res.status(500).json({ status: 'error', message: error.message });
+  }
+});
+
 // ─── Client Contacts ─────────────────────────────────────────────────────────
 
 const {

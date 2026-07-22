@@ -146,3 +146,15 @@
 .actions {
   display: none;
 }
+
+/* Added to cart state */
+.addedToCart {
+  background: var(--success) !important;
+  pointer-events: none;
+}
+
+/* Wishlisted state */
+.wishlisted {
+  color: var(--error) !important;
+  background: #fef2f2 !important;
+}
