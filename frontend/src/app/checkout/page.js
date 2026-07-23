@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
@@ -8,6 +8,7 @@ import { useCart } from '@/context/CartContext';
 import { useCurrency } from '@/context/CurrencyContext';
 import { createRazorpayOrder, verifyRazorpayPayment } from '@/services/order.service';
 import { validateCoupon } from '@/services/admin.service';
+import fetchAPI from '@/services/api';
 import styles from './page.module.css';
 
 export default function CheckoutPage() {
@@ -32,6 +33,33 @@ export default function CheckoutPage() {
     postalCode: '',
     country: currency.isIndia ? 'India' : '',
   });
+
+  // Auto-fill from saved addresses
+  const [savedAddresses, setSavedAddresses] = useState([]);
+  useEffect(() => {
+    async function fetchAddresses() {
+      if (!user) return;
+      try {
+        const res = await fetchAPI('/account/addresses');
+        const addresses = res.data || [];
+        setSavedAddresses(addresses);
+        const defaultAddr = addresses.find(a => a.isDefault) || addresses[0];
+        if (defaultAddr) {
+          setAddress({
+            fullName: defaultAddr.fullName || user?.name || '',
+            phone: defaultAddr.phone || '',
+            addressLine1: defaultAddr.addressLine1 || '',
+            addressLine2: defaultAddr.addressLine2 || '',
+            city: defaultAddr.city || '',
+            state: defaultAddr.state || '',
+            postalCode: defaultAddr.postalCode || '',
+            country: defaultAddr.country || (currency.isIndia ? 'India' : ''),
+          });
+        }
+      } catch (e) {}
+    }
+    fetchAddresses();
+  }, [user]);
 
   if (!user) {
     router.push('/auth/login?redirect=/checkout');
@@ -184,6 +212,20 @@ export default function CheckoutPage() {
           {/* Shipping Address */}
           <div className={styles.section}>
             <h2>Shipping Address</h2>
+            {savedAddresses.length > 1 && (
+              <div className={styles.savedAddresses}>
+                <label className={styles.savedLabel}>Saved Addresses</label>
+                <div className={styles.savedList}>
+                  {savedAddresses.map((addr, i) => (
+                    <button key={i} type="button" className={`${styles.savedCard} ${address.addressLine1 === addr.addressLine1 ? styles.savedCardActive : ''}`} onClick={() => setAddress({ fullName: addr.fullName, phone: addr.phone, addressLine1: addr.addressLine1, addressLine2: addr.addressLine2 || '', city: addr.city, state: addr.state, postalCode: addr.postalCode, country: addr.country })}>
+                      <strong>{addr.fullName}</strong>
+                      <span>{addr.addressLine1}, {addr.city}</span>
+                      {addr.isDefault && <span className={styles.defaultTag}>Default</span>}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
             <div className={styles.row}>
               <div className={styles.field}>
                 <label>Full Name *</label>

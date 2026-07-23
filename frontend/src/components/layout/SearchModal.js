@@ -63,6 +63,28 @@ export default function SearchModal({ isOpen, onClose }) {
 
         {loading && <div className={styles.loading}>Searching...</div>}
 
+        {/* Trending searches — shown when query is empty */}
+        {query.length < 2 && !loading && (
+          <div className={styles.trending}>
+            <p className={styles.trendingLabel}>Popular Searches</p>
+            <div className={styles.trendingTags}>
+              {['Persian Rugs', 'Hand Knotted', 'Wool', 'Modern', 'Runner', 'Round Rug', 'Jute', 'Living Room'].map((term) => (
+                <button key={term} className={styles.trendingTag} onClick={() => setQuery(term)}>
+                  {term}
+                </button>
+              ))}
+            </div>
+            <p className={styles.trendingLabel} style={{ marginTop: '1.25rem' }}>Shop by Room</p>
+            <div className={styles.trendingTags}>
+              {['Living Room', 'Bedroom', 'Dining Room', 'Kids Room', 'Hallway'].map((room) => (
+                <Link key={room} href={`/products?collection=${room.toLowerCase().replace(' ', '-')}`} className={styles.trendingTag} onClick={onClose}>
+                  {room}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
         {results.length > 0 && (
           <div className={styles.results}>
             {results.map((product) => (

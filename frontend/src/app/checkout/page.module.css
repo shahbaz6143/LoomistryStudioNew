@@ -321,3 +321,68 @@
   font-size: 0.8rem;
   color: var(--error);
 }
+
+/* Saved Addresses */
+.savedAddresses {
+  margin-bottom: 1.5rem;
+}
+
+.savedLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.savedList {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.savedCard {
+  flex: 0 0 auto;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+  cursor: pointer;
+  min-width: 180px;
+  transition: all 0.2s;
+}
+
+.savedCard:hover {
+  border-color: var(--secondary);
+}
+
+.savedCardActive {
+  border-color: var(--secondary);
+  background: #faf6f0;
+}
+
+.savedCard strong {
+  display: block;
+  font-size: 0.82rem;
+  margin-bottom: 0.15rem;
+}
+
+.savedCard span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.defaultTag {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.6rem;
+  background: var(--success);
+  color: white;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+}

@@ -10,8 +10,20 @@ export default function Footer() {
       <section className={styles.newsletter}>
         <h3>Stay in the Loop</h3>
         <p>Get updates on new collections, exclusive offers, and styling tips.</p>
-        <form className={styles.newsletterForm} onSubmit={(e) => e.preventDefault()}>
-          <input type="email" placeholder="Your email address" />
+        <form className={styles.newsletterForm} onSubmit={async (e) => {
+          e.preventDefault();
+          const email = e.target.email.value;
+          if (!email) return;
+          try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api'}/newsletter/subscribe`, {
+              method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }),
+            });
+            const data = await res.json();
+            e.target.email.value = '';
+            alert(data.message);
+          } catch (err) { alert('Something went wrong. Please try again.'); }
+        }}>
+          <input type="email" name="email" placeholder="Your email address" required />
           <button type="submit">Subscribe</button>
         </form>
       </section>

@@ -123,3 +123,41 @@
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+/* Trending Searches */
+.trending {
+  padding: 1.25rem 1.5rem;
+}
+
+.trendingLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 0.65rem;
+}
+
+.trendingTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.trendingTag {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.78rem;
+  background: var(--background-alt);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.trendingTag:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}

@@ -2,12 +2,14 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppWidget from '@/components/layout/WhatsAppWidget';
+import BackToTop from '@/components/ui/BackToTop';
 import { AuthProvider } from '@/context/AuthContext';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { CurrencyProvider } from '@/context/CurrencyContext';
 import { BrandProvider } from '@/context/BrandContext';
 import { ToastProvider } from '@/components/ui/Toast';
+import { RecentlyViewedProvider } from '@/context/RecentlyViewedContext';
 
 export const metadata = {
   title: {
@@ -65,10 +67,13 @@ export default function RootLayout({ children }) {
               <CurrencyProvider>
                 <CartProvider>
                   <WishlistProvider>
-                    <Header />
-                    <main>{children}</main>
-                    <Footer />
-                    <WhatsAppWidget />
+                    <RecentlyViewedProvider>
+                      <Header />
+                      <main>{children}</main>
+                      <Footer />
+                      <WhatsAppWidget />
+                      <BackToTop />
+                    </RecentlyViewedProvider>
                   </WishlistProvider>
                 </CartProvider>
               </CurrencyProvider>

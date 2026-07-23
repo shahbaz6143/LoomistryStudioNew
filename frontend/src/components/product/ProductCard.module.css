@@ -44,6 +44,14 @@
   letter-spacing: 0.5px;
 }
 
+.badgeNew {
+  background: var(--accent);
+}
+
+.badgeSale {
+  background: var(--error);
+}
+
 .quickActions {
   position: absolute;
   bottom: 1rem;

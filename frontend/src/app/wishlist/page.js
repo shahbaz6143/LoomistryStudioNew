@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useWishlist } from '@/context/WishlistContext';
+import EmptyState from '@/components/ui/EmptyState';
 import styles from './page.module.css';
 
 export default function WishlistPage() {
@@ -11,20 +12,16 @@ export default function WishlistPage() {
 
   if (!user) {
     return (
-      <div className={`container ${styles.empty}`}>
-        <h1>My Wishlist</h1>
-        <p>Please sign in to view your wishlist.</p>
-        <Link href="/auth/login?redirect=/wishlist" className={styles.btn}>Sign In</Link>
+      <div className="container">
+        <EmptyState type="wishlist" title="My Wishlist" message="Please sign in to view your saved favourites." actionLabel="Sign In" actionHref="/auth/login?redirect=/wishlist" />
       </div>
     );
   }
 
   if (wishlist.length === 0) {
     return (
-      <div className={`container ${styles.empty}`}>
-        <h1>My Wishlist</h1>
-        <p>Your wishlist is empty. Start adding rugs you love!</p>
-        <Link href="/products" className={styles.btn}>Browse Products</Link>
+      <div className="container">
+        <EmptyState type="wishlist" title="Your Wishlist is Empty" message="Save the rugs you love by clicking the heart icon. They'll appear here for easy access." actionLabel="Browse Products" actionHref="/products" />
       </div>
     );
   }

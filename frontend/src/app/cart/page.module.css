@@ -247,3 +247,24 @@
     margin-top: 1rem;
   }
 }
+
+.delivery {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem;
+  background: var(--background-alt);
+  border-radius: var(--radius);
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.delivery svg {
+  flex-shrink: 0;
+  color: var(--success);
+}
+
+.delivery strong {
+  color: var(--primary);
+}

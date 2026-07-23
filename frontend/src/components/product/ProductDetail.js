@@ -10,6 +10,9 @@ import { useCurrency } from '@/context/CurrencyContext';
 import { getProductBySlug, getProducts } from '@/services/product.service';
 import ProductCard from './ProductCard';
 import ReviewSection from './ReviewSection';
+import RecentlyViewed from './RecentlyViewed';
+import ShareButtons from './ShareButtons';
+import { useRecentlyViewed } from '@/context/RecentlyViewedContext';
 import styles from './ProductDetail.module.css';
 
 export default function ProductDetail({ slug }) {
@@ -17,6 +20,7 @@ export default function ProductDetail({ slug }) {
   const { addItem: addToCart } = useCart();
   const { addItem: addToWishlist, isInWishlist, removeItem: removeFromWishlist } = useWishlist();
   const { getPrice, getCustomPrice, formatPrice, currency } = useCurrency();
+  const { addItem: addToRecentlyViewed } = useRecentlyViewed();
   const router = useRouter();
 
   const [product, setProduct] = useState(null);
@@ -42,6 +46,9 @@ export default function ProductDetail({ slug }) {
         if (prod.fixedSizes?.length > 0) setSelectedSize(prod.fixedSizes[0]);
         if (prod.colors?.length > 0) setSelectedColor(prod.colors[0]);
         if (prod.variations?.length > 0) setSelectedVariation(prod.variations[0]);
+
+        // Track recently viewed
+        addToRecentlyViewed(prod);
 
         // Fetch related products (same category)
         const related = await getProducts({ category: prod.category, limit: 4 });
@@ -295,6 +302,9 @@ export default function ProductDetail({ slug }) {
             <p>{product.description}</p>
           </div>
 
+          {/* Share */}
+          <ShareButtons title={product.title} slug={product.slug} image={product.images?.[0]} />
+
           {/* Product Details */}
           <div className={styles.details}>
             <h3>Product Details</h3>
@@ -325,6 +335,9 @@ export default function ProductDetail({ slug }) {
           </div>
         </section>
       )}
+
+      {/* Recently Viewed */}
+      <RecentlyViewed excludeSlug={slug} />
 
       {/* JSON-LD Structured Data */}
       <script

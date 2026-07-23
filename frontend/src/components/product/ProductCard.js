@@ -50,9 +50,14 @@ export default function ProductCard({ product }) {
           alt={product.title}
           className={styles.image}
         />
-        {product.avgRating >= 4.5 && (
-          <span className={styles.badge}>Bestseller</span>
-        )}
+        {/* Dynamic Badges */}
+        {(() => {
+          const isNew = product.createdAt && (Date.now() - new Date(product.createdAt).getTime()) < 14 * 24 * 60 * 60 * 1000;
+          if (product.collections?.includes('deal-of-the-week')) return <span className={`${styles.badge} ${styles.badgeSale}`}>Sale</span>;
+          if (isNew) return <span className={`${styles.badge} ${styles.badgeNew}`}>New</span>;
+          if (product.avgRating >= 4.5) return <span className={styles.badge}>Bestseller</span>;
+          return null;
+        })()}
 
         {/* Quick actions on hover (only for buyers) */}
         {(!user || user.role === 'buyer') && (

@@ -21,6 +21,7 @@ const reviewRoutes = require('./routes/review.routes');
 const catalogueRoutes = require('./routes/catalogue.routes');
 const settingsRoutes = require('./routes/settings.routes');
 const accountRoutes = require('./routes/account.routes');
+const newsletterRoutes = require('./routes/newsletter.routes');
 const { notFoundHandler, errorHandler } = require('./middleware/error.middleware');
 
 const app = express();
@@ -73,6 +74,7 @@ app.use('/api/reviews', reviewRoutes);
 app.use('/api/catalogues', catalogueRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/account', accountRoutes);
+app.use('/api/newsletter', newsletterRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Error handling
